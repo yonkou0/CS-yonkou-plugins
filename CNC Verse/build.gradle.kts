@@ -1,6 +1,5 @@
 // use an integer for version numbers
 version = 81
-name = "SweashNEt"
 
 android {
     buildFeatures {
