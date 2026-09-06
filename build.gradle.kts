@@ -53,7 +53,7 @@ subprojects {
     apply(plugin = "com.lagradost.cloudstream3.gradle")
 
     cloudstream {
-        setRepo("https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension")
+        setRepo("https://github.com/yonkou0/test")
         authors = listOf("NivinCNC")
     }
 
@@ -97,6 +97,7 @@ subprojects {
             buildConfigField("String", "CINETV_WS_SECRET", "\"${getSecret("CINETV_WS_SECRET")}\"")
             buildConfigField("String", "SMARTLINK_URL", "\"${getSecret("SMARTLINK_URL")}\"")
             buildConfigField("String", "SPEEDLINK_URL", "\"${getSecret("SPEEDLINK_URL")}\"")
+            buildConfigField("String", "TMDB_API_KEY", "\"${getSecret("TMDB_API_KEY")}\"")
         }
 
         compileOptions {

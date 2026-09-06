@@ -2,7 +2,12 @@ rootProject.name = "Sweash Repo Fromm CNC Repo(All Language)"
 
 // This file sets what projects are included. All new projects should get automatically included unless specified in "disabled" variable.
 
-val disabled = listOf<String>()
+val disabled = listOf<String>(
+    // HDrezkaProvider: broken against current cloudstream3 API (unresolved refs / syntax errors)
+    "HDrezkaProvider",
+    // MovieLinkBDProvider: uses deprecated `rating` field removed in current cloudstream3 API
+    "MovieLinkBDProvider",
+)
 
 File(rootDir, ".").eachDir { dir ->
     if (!disabled.contains(dir.name) && File(dir, "build.gradle.kts").exists()) {

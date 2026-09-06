@@ -62,6 +62,7 @@ class MovieBoxProviderIN : MainAPI() {
         @Volatile private var lastBrowserOpenMs = 0L
         @Volatile private var telegramPopupShown = false
         private const val BROWSER_DEBOUNCE_MS = 10_000L
+        val jsonMapper = jacksonObjectMapper()
     }
     override var mainUrl = "https://api3.aoneroom.com"
     override var name = "MovieBoxIN"
@@ -189,7 +190,7 @@ class MovieBoxProviderIN : MainAPI() {
             "connection" to "keep-alive",
             "x-client-token" to xClientToken,
             "x-tr-signature" to xTrSignature,
-            "x-client-info" to """{"package_name":"com.community.mbox.in","version_name":"3.0.03.0529.03","version_code":50020042,"os":"android","os_version":"16","device_id":"$deviceId","install_store":"ps","gaid":"d7578036d13336cc","brand":"google","model":"${randomBrandModel()}","system_language":"en","net":"NETWORK_WIFI","region":"IN","timezone":"Asia/Calcutta","sp_code":""}""",
+            "x-client-info" to """{"package_name":"com.community.mbox.in","version_name":"3.0.03.0529.03","version_code":50020042,"os":"android","os_version":"16","device_id":"$deviceId","install_store":"ps","gaid":"d7578036d13336cc","brand":"google","model":"sdk_gphone64_x86_64","system_language":"en","net":"NETWORK_WIFI","region":"IN","timezone":"Asia/Calcutta","sp_code":""}""",
             "x-client-status" to "0",
             "x-play-mode" to "2" // Optional, if needed for specific API behavior
         )
@@ -216,7 +217,7 @@ class MovieBoxProviderIN : MainAPI() {
 
         // Use Jackson to parse the new, multi-section API response structure.
         val homePageLists = try {
-            val mapper = jacksonObjectMapper()
+            val mapper = jsonMapper
             val root = mapper.readTree(responseBody)
             val sections = root["data"]?.get("items") ?: return newHomePageResponse(emptyList())
 
@@ -267,7 +268,7 @@ class MovieBoxProviderIN : MainAPI() {
             "connection" to "keep-alive",
             "x-client-token" to xClientToken,
             "x-tr-signature" to xTrSignature,
-            "x-client-info" to """{"package_name":"com.community.mbox.in","version_name":"3.0.03.0529.03","version_code":50020042,"os":"android","os_version":"16","device_id":"$deviceId","install_store":"ps","gaid":"d7578036d13336cc","brand":"google","model":"${randomBrandModel()}","system_language":"en","net":"NETWORK_WIFI","region":"IN","timezone":"Asia/Calcutta","sp_code":""}""",
+            "x-client-info" to """{"package_name":"com.community.mbox.in","version_name":"3.0.03.0529.03","version_code":50020042,"os":"android","os_version":"16","device_id":"$deviceId","install_store":"ps","gaid":"d7578036d13336cc","brand":"google","model":"sdk_gphone64_x86_64","system_language":"en","net":"NETWORK_WIFI","region":"IN","timezone":"Asia/Calcutta","sp_code":""}""",
             "x-client-status" to "0"
         )
         val requestBody = jsonBody.toRequestBody("application/json".toMediaType())
@@ -278,7 +279,7 @@ class MovieBoxProviderIN : MainAPI() {
         )
 
         val responseBody = response.body.string()
-        val mapper = jacksonObjectMapper()
+        val mapper = jsonMapper
         val root = mapper.readTree(responseBody)
         val results = root.get("data")?.get("results") ?: return newSearchResponseList(emptyList())
         val searchList = mutableListOf<SearchResponse>()
@@ -323,13 +324,13 @@ class MovieBoxProviderIN : MainAPI() {
         val xTrSignature = generateXTrSignature("GET", "application/json", "application/json", finalUrl)
 
         val headers = mapOf(
-            "user-agent" to "com.community.mbox.in/50020042 (Linux; U; Android 16; en_IN; ${randomBrandModel()}; Build/BP22.250325.006; Cronet/133.0.6876.3)",
+            "user-agent" to "com.community.mbox.in/50020042 (Linux; U; Android 16; en_IN; sdk_gphone64_x86_64; Build/BP22.250325.006; Cronet/133.0.6876.3)",
             "accept" to "application/json",
             "content-type" to "application/json",
             "connection" to "keep-alive",
             "x-client-token" to xClientToken,
             "x-tr-signature" to xTrSignature,
-            "x-client-info" to """{"package_name":"com.community.mbox.in","version_name":"3.0.03.0529.03","version_code":50020042,"os":"android","os_version":"16","device_id":"$deviceId","install_store":"ps","gaid":"d7578036d13336cc","brand":"google","model":"${randomBrandModel()}","system_language":"en","net":"NETWORK_WIFI","region":"IN","timezone":"Asia/Calcutta","sp_code":""}""",
+            "x-client-info" to """{"package_name":"com.community.mbox.in","version_name":"3.0.03.0529.03","version_code":50020042,"os":"android","os_version":"16","device_id":"$deviceId","install_store":"ps","gaid":"d7578036d13336cc","brand":"google","model":"sdk_gphone64_x86_64","system_language":"en","net":"NETWORK_WIFI","region":"IN","timezone":"Asia/Calcutta","sp_code":""}""",
             "x-client-status" to "0",
             "x-play-mode" to "2"
         )
@@ -340,7 +341,7 @@ class MovieBoxProviderIN : MainAPI() {
         }
 
         val body = response.body.string()
-        val mapper = jacksonObjectMapper()
+        val mapper = jsonMapper
         val root = mapper.readTree(body)
         val data = root["data"] ?: throw ErrorLoadingException("No data")
 
@@ -401,7 +402,7 @@ class MovieBoxProviderIN : MainAPI() {
 
         val logoUrl = fetchTmdbLogoUrl(
             tmdbAPI = "https://api.themoviedb.org/3",
-            apiKey = "98ae14df2b8d8f8f8136499daf79f0e0",
+            apiKey = BuildConfig.TMDB_API_KEY,
             type = type,
             tmdbId = tmdbId,
             appLangCode = "en"
@@ -578,12 +579,12 @@ class MovieBoxProviderIN : MainAPI() {
                 "connection" to "keep-alive",
                 "x-client-token" to subjectXClientToken,
                 "x-tr-signature" to subjectXTrSignature,
-                "x-client-info" to """{"package_name":"com.community.oneroom","version_name":"3.0.13.0325.03","version_code":50020088,"os":"android","os_version":"13","install_ch":"ps","device_id":"$deviceId","install_store":"ps","gaid":"1b2212c1-dadf-43c3-a0c8-bd6ce48ae22d","brand":"$model","model":"$brand","system_language":"en","net":"NETWORK_WIFI","region":"US","timezone":"Asia/Calcutta","sp_code":"","X-Play-Mode":"1","X-Idle-Data":"1","X-Family-Mode":"0","X-Content-Mode":"0"}""".trimIndent(),
+                "x-client-info" to """{"package_name":"com.community.oneroom","version_name":"3.0.13.0325.03","version_code":50020088,"os":"android","os_version":"13","install_ch":"ps","device_id":"$deviceId","install_store":"ps","gaid":"1b2212c1-dadf-43c3-a0c8-bd6ce48ae22d","brand":"$brand","model":"$model","system_language":"en","net":"NETWORK_WIFI","region":"US","timezone":"Asia/Calcutta","sp_code":"","X-Play-Mode":"1","X-Idle-Data":"1","X-Family-Mode":"0","X-Content-Mode":"0"}""".trimIndent(),
                 "x-client-status" to "0"
             )
 
             val subjectResponse = app.get(subjectUrl, headers = subjectHeaders)
-            val mapper = jacksonObjectMapper()
+            val mapper = jsonMapper
             val subjectIds = mutableListOf<Pair<String, String>>() // Pair of (subjectId, language)
             var originalLanguageName = "Original"
             if (subjectResponse.code == 200) {
@@ -635,7 +636,7 @@ class MovieBoxProviderIN : MainAPI() {
                         "connection" to "keep-alive",
                         "x-client-token" to xClientToken,
                         "x-tr-signature" to xTrSignature,
-                        "x-client-info" to """{"package_name":"com.community.oneroom","version_name":"3.0.13.0325.03","version_code":50020088,"os":"android","os_version":"13","install_ch":"ps","device_id":"$deviceId","install_store":"ps","gaid":"1b2212c1-dadf-43c3-a0c8-bd6ce48ae22d","brand":"$model","model":"$brand","system_language":"en","net":"NETWORK_WIFI","region":"US","timezone":"Asia/Calcutta","sp_code":"","X-Play-Mode":"1","X-Idle-Data":"1","X-Family-Mode":"0","X-Content-Mode":"0"}""".trimIndent(),
+                        "x-client-info" to """{"package_name":"com.community.oneroom","version_name":"3.0.13.0325.03","version_code":50020088,"os":"android","os_version":"13","install_ch":"ps","device_id":"$deviceId","install_store":"ps","gaid":"1b2212c1-dadf-43c3-a0c8-bd6ce48ae22d","brand":"$brand","model":"$model","system_language":"en","net":"NETWORK_WIFI","region":"US","timezone":"Asia/Calcutta","sp_code":"","X-Play-Mode":"1","X-Idle-Data":"1","X-Family-Mode":"0","X-Content-Mode":"0"}""".trimIndent(),
                         "x-client-status" to "0"
                     )
 
@@ -687,14 +688,14 @@ class MovieBoxProviderIN : MainAPI() {
                                     "Authorization" to "Bearer $token",
                                     "user-agent" to "com.community.oneroom/50020088 (Linux; U; Android 13; en_US; $brand; Build/TQ3A.230901.001; Cronet/145.0.7582.0)",
                                     "Accept" to "",
-                                    "x-client-info" to """{"package_name":"com.community.oneroom","version_name":"3.0.13.0325.03","version_code":50020088,"os":"android","os_version":"13","install_ch":"ps","device_id":"$deviceId","install_store":"ps","gaid":"1b2212c1-dadf-43c3-a0c8-bd6ce48ae22d","brand":"$model","model":"$brand","system_language":"en","net":"NETWORK_WIFI","region":"US","timezone":"Asia/Calcutta","sp_code":"","X-Play-Mode":"1","X-Idle-Data":"1","X-Family-Mode":"0","X-Content-Mode":"0"}""".trimIndent(),
+                                    "x-client-info" to """{"package_name":"com.community.oneroom","version_name":"3.0.13.0325.03","version_code":50020088,"os":"android","os_version":"13","install_ch":"ps","device_id":"$deviceId","install_store":"ps","gaid":"1b2212c1-dadf-43c3-a0c8-bd6ce48ae22d","brand":"$brand","model":"$model","system_language":"en","net":"NETWORK_WIFI","region":"US","timezone":"Asia/Calcutta","sp_code":"","X-Play-Mode":"1","X-Idle-Data":"1","X-Family-Mode":"0","X-Content-Mode":"0"}""".trimIndent(),
                                     "X-Client-Status" to "0",
                                     "Content-Type" to "",
                                     "X-Client-Token" to xClientToken,
                                     "x-tr-signature" to xTrSignature,
                                 )
                                 val subResponse = app.get(subLink, headers = headers)
-                                val subRoot = mapper.readTree(subResponse.toString())
+                                val subRoot = mapper.readTree(subResponse.body.string())
                                 val extCaptions = subRoot["data"]?.get("extCaptions")
                                 if (extCaptions != null && extCaptions.isArray) {
                                     for (caption in extCaptions) {
@@ -719,7 +720,7 @@ class MovieBoxProviderIN : MainAPI() {
                                     "Authorization" to "Bearer $token",
                                     "User-Agent" to "com.community.mbox.in/50020042 (Linux; U; Android 16; en_IN; $brand; Build/BP22.250325.006; Cronet/133.0.6876.3)",
                                     "Accept" to "",
-                                    "X-Client-Info" to """{"package_name":"com.community.mbox.in","version_name":"3.0.03.0529.03","version_code":50020042,"os":"android","os_version":"16","device_id":"$deviceId","install_store":"ps","gaid":"d7578036d13336cc","brand":"google","model":"$brand","system_language":"en","net":"NETWORK_WIFI","region":"IN","timezone":"Asia/Calcutta","sp_code":""}""",
+                                    "X-Client-Info" to """{"package_name":"com.community.mbox.in","version_name":"3.0.03.0529.03","version_code":50020042,"os":"android","os_version":"16","device_id":"$deviceId","install_store":"ps","gaid":"d7578036d13336cc","brand":"google","model":"$model","system_language":"en","net":"NETWORK_WIFI","region":"IN","timezone":"Asia/Calcutta","sp_code":""}""",
                                     "X-Client-Status" to "0",
                                     "Content-Type" to "",
                                     "X-Client-Token" to xClientToken1,
@@ -727,7 +728,7 @@ class MovieBoxProviderIN : MainAPI() {
                                 )
                                 val subResponse1 = app.get(subLink1, headers = headers1)
 
-                                val subRoot1 = mapper.readTree(subResponse1.toString())
+                                val subRoot1 = mapper.readTree(subResponse1.body.string())
                                 val extCaptions1 = subRoot1["data"]?.get("extCaptions")
                                 if (extCaptions1 != null && extCaptions1.isArray) {
                                     for (caption in extCaptions1) {
@@ -976,7 +977,7 @@ private suspend fun searchAndPick(
     suspend fun doSearch(endpoint: String, extraParams: String = ""): org.json.JSONArray? {
         val url = buildString {
             append("https://api.themoviedb.org/3/").append(endpoint)
-            append("?api_key=").append("1865f43a0549ca50d341dd9ab8b29f49")
+            append("?api_key=").append(BuildConfig.TMDB_API_KEY)
             append(extraParams)
             append("&include_adult=false&page=1")
             append("&random=").append(Random.nextInt())
@@ -1065,7 +1066,7 @@ private suspend fun searchAndPick(
 
     // fetch details for external_ids
     val detailKind = if (bestIsTv) "tv" else "movie"
-    val detailUrl = "https://api.themoviedb.org/3/$detailKind/$bestId?api_key=1865f43a0549ca50d341dd9ab8b29f49&append_to_response=external_ids&random=${Random.nextInt()}"
+    val detailUrl = "https://api.themoviedb.org/3/$detailKind/$bestId?api_key=${BuildConfig.TMDB_API_KEY}&append_to_response=external_ids&random=${Random.nextInt()}"
     val detailText = app.get(detailUrl).text
     val detailJson = JSONObject(detailText)
     val imdbId = detailJson.optJSONObject("external_ids")?.optString("imdb_id")
