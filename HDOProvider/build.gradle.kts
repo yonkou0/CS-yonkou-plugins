@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 24
 
 android {
@@ -11,7 +11,7 @@ cloudstream {
     language = "ta"
     // All of these properties are optional, you can safely remove them
     description = "HDO provider"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
     /**
      * Status int as the following:
      * 0: Down

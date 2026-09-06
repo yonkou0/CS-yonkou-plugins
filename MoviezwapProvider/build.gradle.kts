@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 20
 
 android {
@@ -13,7 +13,7 @@ cloudstream {
 
     description = "Telugu Movies Provider - Moviezwap"
     language = "te"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     /**
     * Status int as the following:
@@ -30,5 +30,4 @@ cloudstream {
     tvTypes = listOf(
         "Movie"
     )
-    iconUrl = "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/master/MoviezwapProvider/icon.png"
 }

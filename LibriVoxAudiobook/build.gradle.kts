@@ -1,4 +1,4 @@
-version = 21
+﻿version = 21
 
 android {
     buildFeatures {
@@ -11,7 +11,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
 
     description = "Audiobooks in public domain"
-    authors = listOf("KillerDogeEmpire, NivinCNC")
+    authors = listOf("yonkou")
 
     /**
      * Status int as the following:

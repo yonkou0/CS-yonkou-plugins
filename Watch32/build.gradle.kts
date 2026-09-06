@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 23
 
 android {
@@ -13,7 +13,7 @@ cloudstream {
 
     description = "Watch32 is a Free Movies streaming site with over 10000 movies and TV-Series."
     language = "en"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     /**
      * Status int as the following:

@@ -1,4 +1,4 @@
-rootProject.name = "Sweash Repo Fromm CNC Repo(All Language)"
+rootProject.name = "CS-yonkou-plugins"
 
 // This file sets what projects are included. All new projects should get automatically included unless specified in "disabled" variable.
 

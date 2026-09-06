@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 23
 
 android {
@@ -12,7 +12,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
 
     // description = "Lorem Ipsum"
-     authors = listOf("Hexated, NivinCNC")
+     authors = listOf("yonkou")
 
     /**
      * Status int as the following:

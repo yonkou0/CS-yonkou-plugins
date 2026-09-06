@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 32
 
 android {
@@ -16,7 +16,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
     language = "ta"
     description = "Watch Live sports and TV channels via SK Tech"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     /**
      * Status int as the following:

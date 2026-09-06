@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 21
 
 android {
@@ -16,7 +16,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
     language = "ta"
     description = "Stream movies and series from Pikashow"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     /**
      * Status int as the following:
@@ -32,6 +32,5 @@ cloudstream {
     )
     requiresResources = false
 
-    iconUrl = "https://raw.githubusercontent.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/refs/heads/master/PikashowProvider/logo.png"
 
 }

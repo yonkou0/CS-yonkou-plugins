@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 16
 
 android {
@@ -15,7 +15,7 @@ dependencies {
 cloudstream {
     language = "ta"
     description = "Watch Live TV channels & sports via PlayZTV"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     /**
      * Status int as the following:

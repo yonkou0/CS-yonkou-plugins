@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 3
 
 android {
@@ -9,7 +9,7 @@ android {
 
 cloudstream {
     description = "MovieLinkBD - Largest Movie Download Site in Bangladesh"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     /**
     * Status int as the following:

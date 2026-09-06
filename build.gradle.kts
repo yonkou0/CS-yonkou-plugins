@@ -1,4 +1,4 @@
-import com.android.build.gradle.BaseExtension
+﻿import com.android.build.gradle.BaseExtension
 import com.lagradost.cloudstream3.gradle.CloudstreamExtension
 import org.gradle.kotlin.dsl.register
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -53,8 +53,8 @@ subprojects {
     apply(plugin = "com.lagradost.cloudstream3.gradle")
 
     cloudstream {
-        setRepo("https://github.com/yonkou0/test")
-        authors = listOf("NivinCNC")
+        setRepo("https://github.com/yonkou0/CS-yonkou-plugins")
+        authors = listOf("yonkou")
     }
 
     android {

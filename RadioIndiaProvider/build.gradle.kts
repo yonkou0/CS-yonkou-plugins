@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 21
 
 android {
@@ -11,7 +11,7 @@ cloudstream {
     language = "ta"
 
     description = "Radio India Provider"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     status = 1 
     tvTypes = listOf("Live")

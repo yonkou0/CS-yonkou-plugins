@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 34
 
 android {
@@ -12,7 +12,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
 
     description = "Multi Language Movies and Series Provider (Local homepage based on region)"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     /**
      * Status int as the following:
@@ -27,5 +27,4 @@ cloudstream {
         "TvSeries"
     )
 
-    iconUrl = "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/MovieBoxProviderIN/icon.png"
 }

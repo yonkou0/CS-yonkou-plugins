@@ -1,4 +1,4 @@
-// use an integer for version numbers
+﻿// use an integer for version numbers
 version = 81
 
 android {
@@ -18,7 +18,7 @@ cloudstream {
     // All of these properties are optional, you can safely remove them
 
     description = "Netflix, PrimeVideo, Disney+ Hotstar Contents in Multiple Languages"
-    authors = listOf("NivinCNC")
+    authors = listOf("yonkou")
 
     /**
      * Status int as the following:
@@ -35,5 +35,4 @@ cloudstream {
 
     requiresResources = true
 
-    iconUrl = "https://github.com/NivinCNC/CNCVerse-Cloud-Stream-Extension/raw/refs/heads/master/CNC%20Verse/icon.png"
 }
