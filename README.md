@@ -7,7 +7,7 @@ CloudStream 3 extension repository by **yonkou** — multi-language movie, serie
 In CloudStream: Settings → Extensions → Add repository, then paste:
 
 ```
-https://raw.githubusercontent.com/yonkou0/CS-yonkou-plugins/builds/plugins.json
+https://raw.githubusercontent.com/yonkou0/CS-yonkou-plugins/builds/repo.json
 ```
 
 Install any provider from the list. Updates are delivered automatically — every push to `main` rebuilds all extensions and refreshes the `builds` branch.

@@ -1,0 +1,9 @@
+{
+  "name": "CS-yonkou-plugins",
+  "iconUrl": "https://raw.githubusercontent.com/yonkou0/CS-yonkou-plugins/builds/icon.png",
+  "description": "Multi-language movies, series, live TV, anime and audiobooks - CloudStream extensions by yonkou",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/yonkou0/CS-yonkou-plugins/builds/plugins.json"
+  ]
+}

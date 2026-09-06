@@ -48,6 +48,7 @@ jobs:
           mkdir -p deploy
           find . -path "*/build/*.cs3" -not -path "*/intermediates/*" -exec cp {} deploy/ \;
           cp build/plugins.json deploy/plugins.json
+          cp repo.json deploy/repo.json
           ls -la deploy/
 
       - name: Deploy to builds branch
